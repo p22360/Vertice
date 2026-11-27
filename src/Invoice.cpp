@@ -37,6 +37,10 @@ bool Invoice::addBook(const Book &book, int quantity)
         }
     }
 
+    if (nBooks >= MAX_BOOKS)
+    {
+        return false;
+    }
     books[nBooks] = book;
     quantities[nBooks] = quantity;
     nBooks++;
