@@ -21,6 +21,6 @@ bool processPayment(double amount)
 
     snprintf(key, sizeof key, "%s", env != nullptr ? env : "");
     authorized = gatewayAuthorize(key, amount);
-    memset(key, 0, sizeof key);
+    explicit_bzero(key, sizeof key);
     return authorized;
 }
