@@ -37,6 +37,10 @@ bool Invoice::addBook(const Book &book, int quantity)
         }
     }
 
+    if (nBooks >= MAX_BOOKS)
+    {
+        return false;
+    }
     books[nBooks] = book;
     quantities[nBooks] = quantity;
     nBooks++;
@@ -50,7 +54,7 @@ bool Invoice::removeBook(const Book &book)
     {
         if (books[position].equals(book))
         {
-            for (int i = position; i < nBooks; i++)
+            for (int i = position; i < nBooks -1; i++)
             {
                 books[i] = books[i + 1];
                 quantities[i] = quantities[i + 1];
